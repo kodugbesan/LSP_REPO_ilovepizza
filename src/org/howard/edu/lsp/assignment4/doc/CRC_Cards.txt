@@ -1,0 +1,199 @@
+CRC Card
+
+Class: TransponderPacket
+
+Responsibilities:
+
+Encapsulate raw aircraft broadcast data
+
+Provide access to encoded aircraft type and flight data
+
+Transfer packet data to unpacking component
+
+Collaborators (if any):
+
+DataReceiver
+
+PacketUnpacker
+
+Assumptions (if any):
+
+Packet format is high-density and encoded.
+
+CRC Card
+
+Class: DataReceiver
+
+Responsibilities:
+
+Receive incoming transponder packets
+
+Forward packets for unpacking
+
+Validate packet integrity
+
+Collaborators (if any):
+
+TransponderPacket
+
+PacketUnpacker
+
+Assumptions (if any):
+
+Communication channel is reliable.
+
+CRC Card
+
+Class: PacketUnpacker
+
+Responsibilities:
+
+Decode high-density packet format
+
+Extract aircraft flight data
+
+Create Aircraft objects from decoded data
+
+Collaborators (if any):
+
+TransponderPacket
+
+Aircraft
+
+AircraftDatabase
+
+Assumptions (if any):
+
+Packet structure is known and standardized.
+
+CRC Card
+
+Class: Aircraft
+
+Responsibilities:
+
+Store aircraft identity and type
+
+Store flight position, altitude, speed, and heading
+
+Update flight data when new information arrives
+
+Provide aircraft details upon request
+
+Collaborators (if any):
+
+AircraftDatabase
+
+ConflictDetector
+
+Assumptions (if any):
+
+Each aircraft has a unique identifier.
+
+CRC Card
+
+Class: AircraftDatabase
+
+Responsibilities:
+
+Store active aircraft objects
+
+Add new aircraft records
+
+Update existing aircraft data
+
+Retrieve aircraft by identifier
+
+Provide aircraft list for display and analysis
+
+Collaborators (if any):
+
+Aircraft
+
+DisplaySystem
+
+ConflictDetector
+
+ControllerInterface
+
+Assumptions (if any):
+
+Database maintains only currently active aircraft.
+
+CRC Card
+
+Class: DisplaySystem
+
+Responsibilities:
+
+Retrieve aircraft data every 10 seconds
+
+Render graphical representation of aircraft
+
+Refresh controller display
+
+Highlight dangerous aircraft when detected
+
+Collaborators (if any):
+
+AircraftDatabase
+
+ConflictDetector
+
+ControllerInterface
+
+Assumptions (if any):
+
+Display refresh interval is fixed at 10 seconds.
+
+CRC Card
+
+Class: ConflictDetector
+
+Responsibilities:
+
+Analyze aircraft positions and altitudes
+
+Detect potential collisions or unsafe separation
+
+Flag aircraft involved in dangerous situations
+
+Notify display system of conflicts
+
+Collaborators (if any):
+
+AircraftDatabase
+
+Aircraft
+
+DisplaySystem
+
+Assumptions (if any):
+
+Conflict detection rules are predefined.
+
+CRC Card
+
+Class: ControllerInterface
+
+Responsibilities:
+
+Accept controller input queries
+
+Request aircraft details from database
+
+Display detailed aircraft information
+
+Provide interface between controller and system
+
+Collaborators (if any):
+
+AircraftDatabase
+
+Aircraft
+
+DisplaySystem
+
+Assumptions (if any):
+
+Controller queries aircraft using identifier or screen selection.
