@@ -1,0 +1,8 @@
+{
+    "java.project.sourcePaths": [
+        "."
+    ],
+    "java.project.referencedLibraries": [
+        "c:\\Users\\xinas\\OneDrive\\Documents\\lsp\\assignment2\\lib\\junit-platform-console-standalone-1.14.3.jar"
+    ]
+}
